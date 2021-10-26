@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -12,8 +13,8 @@ func main() {
 		fmt.Print("incomplete ...")
 		return
 	}
-	int1 := atoi(os.Args[1])
-	int2 := atoi(os.Args[2])
+	int1, _ := strconv.Atoi(os.Args[1])
+	int2, _ := strconv.Atoi(os.Args[2])
 	temp := int1
 	answer := "X"
 	if int1 > 26 || int1 == 0 || int2 == 0 {
@@ -68,20 +69,4 @@ func space(n1, n2 int) string {
 		return answer
 	}
 	return "\nX"
-}
-
-func atoi(s string) int {
-	arrayStr := []rune(s)
-	n := len(s)
-	ans := 0
-	for i := 0; i < n; i++ {
-		if arrayStr[i] < '0' || arrayStr[i] > '9' {
-			fmt.Print("incomplete ...")
-			return 0
-		} else {
-			ans *= 10
-			ans += int(arrayStr[i]) - '0'
-		}
-	}
-	return ans
 }
